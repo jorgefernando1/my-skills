@@ -33,7 +33,7 @@ Work out what you know about the *why* for each group from the conversation so f
 
 Stage exactly one step. Whole files with `git add <paths>`. When one file holds hunks for different steps, stage by hunk without the interactive UI: write the wanted hunks to a patch and `git apply --cached <patch>`.
 
-Check `git diff --cached` shows only this step, then commit with the message from a heredoc so formatting survives:
+Check `git diff --cached` shows only this step. Before committing, reread the message you wrote and strip anything sensitive (secrets, other people's names or contact details, customer or business data, anything not yours to share; see "Sensitive information" in FORMAT.md). The conversation and the diff often contain such details, so do not copy them into the message. Then commit with the message from a heredoc so formatting survives:
 
 ```bash
 git commit -F - <<'EOF'
@@ -48,6 +48,7 @@ Run any repo hooks normally. If a hook fails, fix the cause and make a new commi
 ## 4. Verify
 
 - `git status` is clean, or only holds what you deliberately left out. Tell the user about anything left out.
+- No commit message contains sensitive information. If one does, fix it now if the commit is yours and unpushed, otherwise tell the user.
 - `git log --stat <base>..HEAD` reads like a story top to bottom: no vague subjects, no step that depends on a later one, no unrelated changes.
 
 ## During autonomous work

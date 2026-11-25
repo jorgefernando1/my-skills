@@ -28,7 +28,7 @@ A commit message tells the story of one piece of work. A reviewer who only sees 
 
 Separate from the subject by a blank line. Wrap at 72 characters. Write prose, not a list of touched files; the diff already shows what changed, the message explains what the diff cannot.
 
-1. **Why.** The problem, symptom or goal. Include the exact error text or failing command when there is one, so `git log --grep` finds this commit later.
+1. **Why.** The problem, symptom or goal. Include the exact error text or failing command when there is one, so `git log --grep` finds this commit later, after removing anything sensitive (see "Sensitive information").
 2. **What happened.** The investigation and the decision: what was tried, what ruled options out, why the chosen approach beat the alternatives, and any trade-off a reviewer would otherwise ask about. Dead ends that explain the final shape belong here.
 3. **How to verify.** Only when non-obvious: the command, test, or manual check that shows it works. Record a command if it taught something reusable.
 
@@ -39,6 +39,19 @@ Separate from the subject by a blank line. Wrap at 72 characters. Write prose, n
 ### Scale to the change
 
 Length follows what the change needs, not a quota. A typo fix is a subject line alone. A non-obvious fix after an hour of debugging deserves the whole story. Never pad.
+
+### Sensitive information
+
+Commit history is permanent, widely copied and often readable by people who never saw the session. Keep anything that should not be shared out of the message, whatever its form. The following are examples, not a complete list; judge by the principle: **if the information is not yours to publish, or could cause harm or embarrassment if it spread, leave it out.**
+
+- Secrets and access: passwords, tokens, API keys, private keys, connection strings, session cookies, internal URLs or hostnames that are not public.
+- People: names, emails, phone numbers, handles, or any detail that identifies someone other than the user, including colleagues, customers and reporters.
+- Customer or business data: customer names and details, account or order IDs, records, support tickets quoted verbatim, contract or pricing details, unreleased plans.
+- Anything the user or the project marked confidential, or that you would not paste into a public issue.
+
+When the story needs the detail, describe it generically or redact it: "a customer reported", `<redacted>`, `<token>`, `user@example.com`. Apply this to quoted error text and commands too: keep the useful, searchable part and replace the sensitive values. If a detail cannot be removed without losing the point, leave it out and keep the rest. When unsure whether something is sensitive, treat it as sensitive.
+
+Public attribution of sources (a published article or a library author) is fine. Credit for people in a private context is not.
 
 ### Honesty
 
