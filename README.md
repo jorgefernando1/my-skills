@@ -14,8 +14,23 @@ Central repo for my AI tooling: skills I write, skills I vendor, and reusable ru
 
 ## Using a skill
 
-Symlink it into Claude Code's skills directory:
+Claude Code only, for now. Skills are loaded by symlinking each skill folder (any folder containing a `SKILL.md`) into `~/.claude/skills/`. Run from the repo root.
+
+Load a single skill:
 
 ```bash
-ln -s "$PWD/skills/stacked-rebase" ~/.claude/skills/stacked-rebase
+mkdir -p ~/.claude/skills
+ln -sfn "$PWD/skills/stacked-rebase" ~/.claude/skills/stacked-rebase
 ```
+
+Load **all** my skills (`vendor/` is reference only and is not loaded):
+
+```bash
+mkdir -p ~/.claude/skills
+for f in skills/*/SKILL.md; do
+  dir="$(dirname "$PWD/$f")"
+  ln -sfn "$dir" ~/.claude/skills/"$(basename "$dir")"
+done
+```
+
+Because they are symlinks, `git pull` updates the skills in place. Re-run the loop after adding a new skill. Restart Claude Code (or start a new session) to pick up new skills.
