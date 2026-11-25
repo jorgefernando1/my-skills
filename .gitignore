@@ -1,0 +1,6 @@
+# Testing artifacts (skill eval runs, benchmarks, logs)
+test-artifacts/
+
+# Local / OS noise
+.DS_Store
+*.log
