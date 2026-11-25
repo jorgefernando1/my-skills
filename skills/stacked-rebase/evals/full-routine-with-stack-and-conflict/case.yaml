@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: full-routine-with-stack-and-conflict
+expected_outcome: |
+  Local main fast-forwarded to origin/main. feat-one, feat-two (stacked on feat-one) and feat-three rebased so each contains origin/main; feat-two sits on top of the new feat-one. The app.txt line-3 conflict in feat-three is resolved with no markers (keeping both lines is acceptable if flagged as a judgment call). old-merged and old-squashed are NOT deleted and are not rebased, but the report mentions them as merged. Dirty state restored in both worktrees. No stashes left. Nothing pushed.

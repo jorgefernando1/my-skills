@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: report-merged-branches-only
+expected_outcome: |
+  The answer lists old-merged and old-squashed as merged (with the reasoning: merge commit vs squash/patch-equivalent) and says feat-one, feat-two, feat-three are not merged. The repo is unchanged: all branch tips, the working tree dirty state, and local main are exactly as at fixture start; no stashes created.

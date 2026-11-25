@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: unfixable-conflict-aborts-stack-and-stash-conflict
+expected_outcome: |
+  feat-one and feat-two are rebased (stack kept). feat-three can't be fixed (binary data.bin changed on both sides), so its rebase is aborted and its tip is unchanged; feat-four, stacked on it, is not attempted and unchanged. The uncommitted edit in fx/work (app.txt line 2) conflicts on stash pop: it is applied anyway with conflict markers, the stash entry is kept, and the report flags it. fx/work-wt's dirty three.txt is restored. The final report leads with the failures. Nothing deleted or pushed.

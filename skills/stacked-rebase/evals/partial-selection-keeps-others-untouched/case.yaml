@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: partial-selection-keeps-others-untouched
+expected_outcome: |
+  main updated; feat-one rebased on main; feat-two rebased on feat-one; feat-three's tip and its worktree's dirty state untouched; nothing deleted; the report identifies BOTH old-merged and old-squashed as merged. Dirty state in fx/work restored.
